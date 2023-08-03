@@ -1,0 +1,41 @@
+type Query {
+  orders: orderResponseGet!
+}
+
+type Mutation {
+  orders(username: String!, contact: String!, orders: [Order]): orderResponse
+}
+
+input Order {
+  food_id: ID
+  category_id: ID
+  food_name: String
+  food_price: Int
+  count: Int
+}
+
+type orderResponse {
+  status: Int!
+  message: String!
+}
+
+type orderResponseGet {
+  status: Int!
+  message: String!
+  data: [OrderGet]
+}
+
+type OrderGet {
+  _id: ID!
+  username: String!
+  contact: String!
+  orders: [Order2!]
+}
+
+type Order2 {
+  food_id: ID
+  category_id: ID
+  food_name: String
+  food_price: Int
+  count: Int
+}

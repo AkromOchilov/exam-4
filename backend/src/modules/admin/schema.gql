@@ -1,0 +1,20 @@
+type Query {
+	admin(username: String!, password: String!): Admin!
+
+}
+
+type Admin {
+  status: Int!
+  message: String!
+  token: String!
+}
+
+type Mutation {
+  postAdmin(username: String!, password: String!): Response!
+}
+
+type Response {
+  status: Int!
+  message: String!
+  token: String
+}

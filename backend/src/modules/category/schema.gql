@@ -1,0 +1,40 @@
+type Query {
+	category: CategoryResponse!
+}
+
+type CategoryResponse {
+	status: Int!
+	message: String!
+	data: [Category]
+}
+
+type Category {
+	_id: ID!
+	category_name: String!
+	category_image: String!
+}
+
+type File {
+	status: Int!
+	message: String!
+	data: CreateCategoryResponse
+}
+
+type CreateCategoryResponse {
+	_id: ID!
+	category_name: String!
+	category_image: String!
+}
+
+type updateFile {
+	status: Int!
+	message: String!
+}
+
+type Mutation {
+	createCategory(file: Upload!, category_name: String!): File!
+	updateCategory(id: String!, category_name: String!): updateFile!
+	deleteCategory(id: String!): updateFile!
+}
+
+scalar Upload

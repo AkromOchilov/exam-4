@@ -1,0 +1,47 @@
+type Query {
+	food(foodId: ID!): FoodResponse!
+	foods: FoodResponse!
+}
+
+type FoodResponse {
+	status: Int!
+	message: String!
+	data: [Foods]
+}
+
+type Foods {
+	_id: ID!
+	category_id: ID!
+	food_name: String!
+	food_price: Int!
+	food_image: String!
+}
+
+type Mutation {
+	createYourFood(
+		foodImage: Upload!
+		category_id: ID!
+		food_name: String!
+		food_price: Int!
+	): FoodFile!
+	deleteFood(id: ID!, category_id: ID!): deleteResponse!
+	updateFood(id: ID!, food_name: String!, food_price: Int!): deleteResponse!
+}
+type FoodFile {
+	status: Int!
+	message: String!
+	data: CreateFoodResponse
+}
+
+type deleteResponse {
+	status: Int!
+	message: String!
+}
+
+type CreateFoodResponse {
+	_id: ID!
+	category_id: ID!
+	food_name: String!
+	food_image: String!
+	food_price: Int!
+}
